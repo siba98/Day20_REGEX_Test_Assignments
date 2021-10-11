@@ -11,27 +11,32 @@ namespace REGEX_Test
     [TestClass]
     public class UnitTest1
     {
+        //UC1
         [TestMethod]
-        public void GivenFirstName_If_Null_ShouldThrow_UserRegistrationCustomException()
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void Given_ValidateFirstName_If_Null_ShouldThrow_UserRegistrationCustomException()
         {
             //Arrange
             FirstName_Pattern patternMatch = new FirstName_Pattern();
-            bool expected = true;
+            //bool expected = true;
+            string expected = "Invalid FirstName"; 
 
             //Act
-            var result = patternMatch.ValidateFirstName("Siba");
+            var result = patternMatch.ValidateFirstName(null);
+            //var result = patternMatch.ValidateFirstName("Siba");
 
             //Assert
             Assert.AreEqual(expected, result);
         }
 
+        //UC2
         [TestMethod]
         [ExpectedException(typeof(UserRegistrationCustomException))]
-        public void GivenLastName_If_Null_ShouldThrow_UserRegistrationCustomException()
+        public void Given_ValidateLastName_If_Null_ShouldThrow_UserRegistrationCustomException()
         {
             //Arrange
             LastName_Pattern patternMatch = new LastName_Pattern();
-            bool expected = true;
+            string expected = "Invalid LastName";
 
             //Act
             var result = patternMatch.ValidateLastName(null);
@@ -41,43 +46,52 @@ namespace REGEX_Test
             Assert.AreEqual(expected, result);
         }
 
+        //UC3_9
         [TestMethod]
-        public void GivenEmail_If_Null_ShouldThrow_UserRegistrationCustomException()
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void Given_ValidateEmail_If_Null_ShouldThrow_UserRegistrationCustomException()
         {
             //Arrange
             Email_Pattern patternMatch = new Email_Pattern();
             bool expected = true;
 
             //Act
-            var result = patternMatch.ValidateEmail("abc.xyz@bl.co.in");
+            var result = patternMatch.ValidateEmail(null);
+            //var result = patternMatch.ValidateEmail("abc.xyz@bl.co.in");
 
             //Assert
             Assert.AreEqual(expected, result);
         }
 
+        //UC4
         [TestMethod]
-        public void GivenMobileNumber_If_Null_ShouldThrow_UserRegistrationCustomException()
+        //[ExpectedException(typeof(UserRegistrationCustomException))]
+        public void Given_ValidateMobileNumber_If_Null_ShouldThrow_UserRegistrationCustomException()
         {
             //Arrange
             MobileNumber_Pattern patternMatch = new MobileNumber_Pattern();
             bool expected = true;
 
             //Act
+            //var result = patternMatch.ValidatePhoneNumber(null);
             var result = patternMatch.ValidatePhoneNumber("91 7504832115");
 
             //Assert
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod]
-        public void GivenPassword_If_Null_ShouldThrow_UserRegistrationCustomException()
+        //UC5_6_7_8
+        [TestMethod] 
+        //[ExpectedException(typeof(UserRegistrationCustomException))]
+        public void Given_ValidatePassword_If_Null_ShouldThrow_UserRegistrationCustomException()
         {
             //Arrange
             Password_Pattern patternMatch = new Password_Pattern();
             bool expected = true;
 
             //Act
-            var result = patternMatch.ValidatePassword("Tr5h7stU&");
+            //var result = patternMatch.ValidatePassword(null);
+            var result = patternMatch.ValidatePassword("Tr5h7$stU");
 
             //Assert
             Assert.AreEqual(expected, result);
